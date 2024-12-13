@@ -1,0 +1,8 @@
+runtime: nodejs16
+handlers:
+- url: /
+  static_files: index.html
+  upload: index.html
+- url: /
+  script: auto
+  secure: always
