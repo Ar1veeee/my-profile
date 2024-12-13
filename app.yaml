@@ -1,8 +1,15 @@
-runtime: nodejs16
+runtime: nodejs18
+
 handlers:
-- url: /
-  static_files: index.html
-  upload: index.html
-- url: /
-  script: auto
-  secure: always
+  - url: /
+    static_files: index.html
+    upload: index.html
+
+  - url: /src
+    static_dir: src
+
+  - url: /dist
+    static_dir: dist
+
+  - url: /.*
+    script: auto
