@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="src/output.css">
 </head>
 
-<body>
+<body class="dark:bg-slate-800 dark:text-white">
     <!-- Navbar Start -->
     <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
         <div class="container">
@@ -18,38 +18,49 @@
                         aliefarfn
                     </a>
                 </div>
+                <div class="flex">
+                    <span class="text-slate-500 text-sm mr-2">light</span>
+                    <input type="checkbox" id="toggle" class="hidden">
+                    <label for="toggle">
+                        <div class="w-9 h-5 bg-slate-500 rounded-full flex items-center p-1 cursor-pointer">
+                            <div class="w-4 h-4 bg-white rounded-full toggle-circle"></div>
+                        </div>
+                    </label>
+                    <span class="text-slate-500 text-sm ml-2">dark</span>
+                </div>
                 <div class="flex items-center px-4">
                     <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
-                        <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
-                        <span class="hamburger-line transition duration-300 ease-in-out"></span>
-                        <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+                        <span class="hamburger-line dark:bg-white transition duration-300 ease-in-out origin-top-left"></span>
+                        <span class="hamburger-line dark:bg-white transition duration-300 ease-in-out"></span>
+                        <span class="hamburger-line dark:bg-white transition duration-300 ease-in-out origin-top-left"></span>
                     </button>
-                    <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full 
+
+                    <nav id="nav-menu" class="hidden absolute py-5 dark:bg-slate-800  bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full 
                         lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                         <ul class="block lg:flex">
                             <li class="group">
-                                <a href="#home" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">
+                                <a href="#home" class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-primary">
                                     Beranda
                                 </a>
                             </li>
                             <li class="group">
-                                <a href="#about" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">
+                                <a href="#about" class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-primary">
                                     About
                                 </a>
                             </li>
                             <li class="group">
                                 <a href="#portfolio"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">
+                                    class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-primary">
                                     Portfolio
                                 </a>
                             </li>
                             <li class="group">
-                                <a href="#skills" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">
+                                <a href="#skills" class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-primary">
                                     Skills
                                 </a>
                             </li>
                             <li class="group">
-                                <a href="#contact" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">
+                                <a href="#contact" class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-primary">
                                     Contact
                                 </a>
                             </li>
@@ -67,7 +78,7 @@
             <div class="flex flex-wrap">
                 <div class="w-full self-center px-4 lg:w-1/2">
                     <h1 class="text-base font-semibold text-primary md:text-xl">Hi 👋, I'm...
-                        <span class="block font-bold text-dark text-4xl mt-1 lg:text-5xl"> Alief Arifin Mahardiko
+                        <span class="block font-bold text-dark text-4xl mt-1 lg:text-5xl dark:text-white"> Alief Arifin Mahardiko
                         </span>
                     </h1>
                     <h2 class="font-medium text-secondary text-lg mb-5 lg:text-2xl">Student &
@@ -84,11 +95,10 @@
                 </div>
                 <div class="w-full self-end px-4 lg:w-1/2">
                     <div class="relative mt-10 lg:mt-0 lg:right-0">
-                        <img src="https://storage.googleapis.com/alief-profile/profile.png" alt="Alief Arifin"
-                            class="max-w-full mx-auto" />
+                        <img src="dist/img/profile.png" alt="Alief Arifin" class="max-w-full mx-auto" />
                         <span class="absolute -bottom-0 -z-10 left-1/2 
                         -translate-x-1/2 hidden sm:block">
-                            <svg width="500" height="500" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                                 <path fill="#6366f1"
                                     d="M44.6,-58.5C55.4,-44,60.3,-27.7,65.5,-9.8C70.8,8.2,76.5,27.8,70.9,44.3C65.4,60.8,48.6,74.2,29.6,80.9C10.6,87.6,-10.7,87.7,-29.6,81C-48.5,74.2,-65.1,60.7,-70.9,44.1C-76.8,27.5,-72,7.8,-68.4,-11.9C-64.7,-31.7,-62.3,-51.5,-51.1,-65.9C-39.9,-80.4,-20,-89.4,-1.5,-87.5C16.9,-85.7,33.7,-73,44.6,-58.5Z"
                                     transform="translate(100 100) scale(1)" />
@@ -180,31 +190,31 @@
                     <h3 class="font-semibold text-primary text-3xl lg:text-4xl mb-6">Experience</h3>
                     <div class="">
                         <h2 class="font-medium text-primary text-lg mb-1 lg:text-2xl">2022
-                            <span class="text-dark">Linux+ Certification</span>
+                            <span class="text-dark dark:text-white">Linux+ Certification</span>
                         </h2>
                         <p class="font-medium text-slate-400 mb-5 lg:text-xl">
                             CompTIA
                         </p>
                         <h2 class="font-medium text-primary text-lg mb-1 lg:text-2xl">2022
-                            <span class="text-dark">Cyberwarriors Bootcamp</span>
+                            <span class="text-dark dark:text-white">Cyberwarriors Bootcamp</span>
                         </h2>
                         <p class="font-medium text-slate-400 mb-5 lg:text-xl">
                             SGI Asia x InfraDigital Foundation
                         </p>
                         <h2 class="font-medium text-primary text-lg mb-1 lg:text-2xl">2023
-                            <span class="text-dark">Program Kreatifitas Mahasiswa - Karsa Cipta</span>
+                            <span class="text-dark dark:text-white">Program Kreatifitas Mahasiswa - Karsa Cipta</span>
                         </h2>
                         <p class="font-medium text-slate-400 mb-5 lg:text-xl">
                             Belmawa - IoT Engineer
                         </p>
                         <h2 class="font-medium text-primary text-lg mb-1 lg:text-2xl">2023
-                            <span class="text-dark">Top 30 INNOVILLAGE</span>
+                            <span class="text-dark dark:text-white">Top 30 INNOVILLAGE</span>
                         </h2>
                         <p class="font-medium text-slate-400 mb-5 lg:text-xl">
                             BUMN x Telkom Indonesia - IoT Engineer
                         </p>
                         <h2 class="font-medium text-primary text-lg mb-1 lg:text-2xl">2023
-                            <span class="text-dark">MTCNA Certification</span>
+                            <span class="text-dark dark:text-white">MTCNA Certification</span>
                         </h2>
                         <p class="font-medium text-slate-400 mb-5 lg:text-xl">
                             Mikrotik
@@ -217,12 +227,12 @@
     <!-- About section End -->
 
     <!-- Portfolio Start-->
-    <section id="portfolio" class="pt-36 pb-16 bg-slate-100">
+    <section id="portfolio" class="pt-36 pb-16 bg-slate-100 dark:bg-slate-800 dark:text-white">
         <div class="container">
             <div class="w-full px-4">
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Portfolio</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4">My Projects</h2>
+                    <h2 class="font-bold text-dark text-3xl mb-4 dark:text-white">My Projects</h2>
                     <p class="font-medium text-md text-secondary">
                         Explore some of my projects that showcase my
                         skills and expertise in different technologies and programming languages.
@@ -230,60 +240,103 @@
                 </div>
             </div>
             <div class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto">
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden">
-                        <img src="https://storage.googleapis.com/alief-profile/projects/project-1.png" alt="Ekspedisi"
-                            width="w-full">
-                    </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Expedition Website</h3>
-                    <p class="font-medium text-base text-secondary">
-                        An expedition service website with transaction features and prices that can be adjusted
-                        based on the distance, weight, type of delivery chosen.
-                    </p>
+                <div class="mb-12 p-4 md:w-1/2 border border-slate-200 rounded-lg shadow-md xl:border-none da">
+                    <a href="https://github.com/Ar1veeee/VB.Net-Website-Jasa-Pengiriman" target="_blank">
+                        <div class="rounded-md shadow-md overflow-hidden">
+                            <img src="https://storage.googleapis.com/alief-profile/projects/project-1.png"
+                                alt="Ekspedisi" width="w-full">
+                        </div>
+                        <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Expedition Website</h3>
+                        <p class="font-medium text-base text-secondary">
+                            An expedition service website with transaction features and prices that can be adjusted
+                            based on the distance, weight, type of delivery chosen.
+                        </p>
+                        <button class="bg-primary text-white font-semibold py- px-4 mt-2 rounded">
+                            .NET
+                        </button>
+                        <button class="bg-primary text-white font-semibold py- px-4 mt-2 rounded">
+                            Visual Basic
+                        </button>
+                    </a>
                 </div>
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden">
-                        <img src="https://storage.googleapis.com/alief-profile/projects/project-2.png" alt="Ekspedisi"
-                            width="w-full">
-                    </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">UMKM Website</h3>
-                    <p class="font-medium text-base text-secondary">
-                        an UMKM website with transaction features, messages, viewing menus that can help
-                        UMKM traders manage their business computationally.
-                    </p>
+                <div class="mb-12 p-4 md:w-1/2 border border-slate-200 rounded-lg shadow-md xl:border-none">
+                    <a href="https://github.com/Ar1veeee/CodeIgniter4-UMKM" target="_blank">
+                        <div class="rounded-md shadow-md overflow-hidden">
+                            <img src="https://storage.googleapis.com/alief-profile/projects/project-2.png" alt="UMKM"
+                                width="w-full">
+                        </div>
+                        <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">UMKM Website</h3>
+                        <p class="font-medium text-base text-secondary">
+                            an UMKM website with transaction features, messages, viewing menus that can help
+                            UMKM traders manage their business computationally.
+                        </p>
+                        <button class="bg-primary text-white font-semibold py- px-4 mt-2 rounded">
+                            PHP
+                        </button>
+                        <button class="bg-primary text-white font-semibold py- px-4 mt-2 rounded">
+                            Code Igniter 4
+                        </button>
+                    </a>
                 </div>
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden">
-                        <img src="https://storage.googleapis.com/alief-profile/projects/project-5.png" alt="Ekspedisi"
-                            width="w-full">
-                    </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Skinory-APIs</h3>
-                    <p class="font-medium text-base text-secondary">
-                        A RESTful-API and backend system for Skinory Mobile apps to helps users monitor
-                        their daily skincare routine.
-                    </p>
+                <div class="mb-12 p-4 md:w-1/2 border border-slate-200 rounded-lg shadow-md xl:border-none">
+                    <a href="https://github.com/Ar1veeee/BackEnd_SkinOry_CC" target="_blank">
+                        <div class="rounded-md shadow-md overflow-hidden">
+                            <img src="https://storage.googleapis.com/alief-profile/projects/project-5.png"
+                                alt="Ekspedisi" width="w-full">
+                        </div>
+                        <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Skinory-APIs</h3>
+                        <p class="font-medium text-base text-secondary">
+                            A RESTful-API and backend system for Skinory Mobile apps to helps users monitor
+                            their daily skincare routine.
+                        </p>
+                        <button class="bg-primary text-white font-semibold py- px-4 mt-2 rounded">
+                            API
+                        </button>
+                        <button class="bg-primary text-white font-semibold py- px-4 mt-2 rounded">
+                            NodeJS
+                        </button>
+                        <button class="bg-primary text-white font-semibold py- px-4 mt-2 rounded">
+                            Google Cloud
+                        </button>
+                    </a>
                 </div>
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden">
-                        <img src="https://storage.googleapis.com/alief-profile/projects/project-3.jpg" alt="Ekspedisi"
-                            width="w-full">
-                    </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Air Quality IoT</h3>
-                    <p class="font-medium text-base text-secondary">
-                        An IoT device that detects Carbon monoxide, sulfur dioxide,
-                        humidity, and temperature in the surrounding area.
-                    </p>
+                <div class="mb-12 p-4 md:w-1/2 border border-slate-200 rounded-lg shadow-md xl:border-none">
+                    <a href="https://github.com/Ar1veeee/Air-Quality-Detection-Sensor" target="_blank">
+                        <div class="rounded-md shadow-md overflow-hidden">
+                            <img src="https://storage.googleapis.com/alief-profile/projects/project-3.jpg"
+                                alt="Ekspedisi" width="w-full">
+                        </div>
+                        <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Air Quality IoT</h3>
+                        <p class="font-medium text-base text-secondary">
+                            An IoT device that detects Carbon monoxide, sulfur dioxide,
+                            humidity, and temperature in the surrounding area.
+                        </p>
+                        <button class="bg-primary text-white font-semibold py- px-4 mt-2 rounded">
+                            C++
+                        </button>
+                        <button class="bg-primary text-white font-semibold py- px-4 mt-2 rounded">
+                            IoT
+                        </button>
+                    </a>
                 </div>
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden">
-                        <img src="https://storage.googleapis.com/alief-profile/projects/project-4.jpg" alt="Ekspedisi"
-                            width="w-full">
-                    </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Smartfins IoT</h3>
-                    <p class="font-medium text-base text-secondary">
-                        An IoT device that detects dissolved oxygen content,
-                        Ph level, and water temperature in freshwater fish ponds.
-                    </p>
+                <div class="mb-12 p-4 md:w-1/2 border border-slate-200 rounded-lg shadow-md xl:border-none">
+                    <a href="https://github.com/Ar1veeee/SmartFins-IoT" target="_blank">
+                        <div class="rounded-md shadow-md overflow-hidden">
+                            <img src="https://storage.googleapis.com/alief-profile/projects/project-4.jpg"
+                                alt="Ekspedisi" width="w-full">
+                        </div>
+                        <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Smartfins IoT</h3>
+                        <p class="font-medium text-base text-secondary">
+                            An IoT device that detects dissolved oxygen content,
+                            Ph level, and water temperature in freshwater fish ponds.
+                        </p>
+                        <button class="bg-primary text-white font-semibold py- px-4 mt-2 rounded">
+                            C++
+                        </button>
+                        <button class="bg-primary text-white font-semibold py- px-4 mt-2 rounded">
+                            IoT
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -296,7 +349,7 @@
             <div class="flex flex-wrap items-center">
                 <!-- Text Section -->
                 <div class="w-full lg:w-1/2 mb-10 lg:mb-0">
-                    <h2 class="text-3xl font-bold text-teal-400 mb-4">My Skills</h2>
+                    <h2 class="text-3xl font-bold text-primary mb-4">My Skills</h2>
                     <p class="text-base font-medium text-slate-300 text-justify">
                         I am skilled in creating stunning web applications using HTML, CSS, Javascript, Tailwind, and
                         Bootstrap. Additionally, I am currently deepening my expertise in back-end and API development
@@ -308,7 +361,7 @@
                 <!-- Icons Section -->
                 <div class="w-full lg:w-1/2 flex flex-wrap justify-center gap-6">
                     <div
-                        class="w-20 h-20 lg:w-24 lg:h-24 bg-white flex items-center justify-center rounded-lg shadow-lg">
+                        class="w-20 h-20 lg:w-24 lg:h-24 bg-white flex items-center justify-center rounded-lg shadow-lg xl:border-none">
                         <img src="https://storage.googleapis.com/alief-profile/icons/html.png" alt="HTML"
                             class="w-12 lg:w-16">
                     </div>
@@ -378,9 +431,10 @@
                     </p>
                 </div>
             </div>
-    
+
             <!-- Alert Start -->
-            <div id="alert-success" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4 hidden"
+            <div id="alert-success"
+                class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4 hidden"
                 role="alert">
                 <strong class="font-bold">Success!</strong>
                 <span class="block sm:inline">Your message has been sent successfully.</span>
@@ -395,7 +449,7 @@
                 </button>
             </div>
             <!-- Alert End -->
-    
+
             <form name="profile-contact-form" action="#" onsubmit="showAlert(event)">
                 <div class="w-full lg:w-2/3 lg:mx-auto">
                     <div class="w-full px-4 mb-8">
@@ -417,7 +471,8 @@
                             Pesan
                         </label>
                         <textarea id="message" class="w-full bg-slate-200 text-dark p-3 rounded-md 
-                    focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary h-32" name="message"></textarea>
+                    focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary h-32"
+                            name="message"></textarea>
                     </div>
                     <div class="w-full px-4">
                         <button type="submit" class="text-base font-semibold text-white bg-primary py-3 px-8 rounded-full w-full
@@ -438,8 +493,8 @@
                 <div class="w-full px-4 mb-12 text-slate-300 font-medium md:w-1/3">
                     <h2 class="font-bold text-white text-4xl mb-5">Contact me</h2>
                     <p>aliefarifin99@gmail.com</p>
-                    <p>Jl. Ibu Pertiwi</p>
-                    <p>Surakarta</p>
+                    <p>Jl. Ibu Pertiwi No.6</p>
+                    <p>Surakarta, Jawa Tengah</p>
                 </div>
                 <div class="w-full px-4 mb-12 md:w-1/3">
                     <h3 class="font-semibold text-xl text-white mb-5">
@@ -527,24 +582,24 @@
                         </svg>
                     </a>
                 </div>
-                <p class="font-medium text-sm text-slate-500 text-center">Made by <a
-                        href="https://instagram.com/aliefarfn" target="_blank" class=" font-bold text-primary">Alief
-                        Arifin Mahardiko</a>, using Tailwind CSS 3.</p>
+                <p class="font-medium text-sm text-slate-500 text-center">
+                    &copy; 2024 <a href="https://instagram.com/aliefarfn" target="_blank" class="font-bold text-primary">Alief Arifin Mahardiko</a>. All Rights Reserved.
+                </p>                
             </div>
         </div>
     </footer>
     <!-- Footer End -->
 
     <script src="dist/js/script.js" defer></script>
-        <script>
+    <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwHpebIuLS8tdxeU5MhzraFT3zdMX78_krEqcBpwSaQ9NGQ-H_JsovCNQCAMUxqGuA45w/exec'
         const form = document.forms['profile-contact-form']
 
         form.addEventListener('submit', e => {
             e.preventDefault()
             fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => 
-                console.log('Success!', response))
+                .then(response =>
+                    console.log('Success!', response))
                 .catch(error => console.error('Error!', error.message))
         })
     </script>
