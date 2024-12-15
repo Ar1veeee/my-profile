@@ -612,17 +612,15 @@
             document.getElementById('alert-success').classList.remove('hidden');
         }
     </script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LdWPJwqAAAAAGXNR2grnYrksuyhe7VWm1W_f5Ox"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=site-key"></script>
     <script>
         function showAlert(event) {
-            event.preventDefault(); // Mencegah form submit default
-
-            // Ambil token reCAPTCHA
+            event.preventDefault();             
             grecaptcha.ready(function () {
-                grecaptcha.execute('6LdWPJwqAAAAAGXNR2grnYrksuyhe7VWm1W_f5Ox', { action: 'submit' }).then(function (token) {
-                    console.log('Token:', token); // Log token untuk debug
+                grecaptcha.execute('site-key', { action: 'submit' }).then(function (token) {
+                    console.log('Token:', token); 
 
-                    // Kirim token ke backend
+                    
                     fetch('http://127.0.0.1:8080/verify-recaptcha', {
                         method: 'POST',
                         headers: {
@@ -634,7 +632,7 @@
                         .then(data => {
                             if (data.success) {
                                 alert('Pesan berhasil dikirim!');
-                                document.forms['profile-contact-form'].submit(); // Lanjutkan pengiriman form
+                                document.forms['profile-contact-form'].submit(); 
                             } else {
                                 alert('Verifikasi reCAPTCHA gagal: ' + data.message);
                             }

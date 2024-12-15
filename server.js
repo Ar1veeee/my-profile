@@ -9,16 +9,16 @@ const wss = new WebSocket.Server({ server });
 
 app.use(cors());
 app.use(express.static('dist'));
-app.use(express.json());  // Menambahkan middleware untuk parsing JSON body
+app.use(express.json());  
 app.use(express.urlencoded({ extended: true }));
 
-// Secret key dari Google reCAPTCHA (server-side)
-const SECRET_KEY = '6LdWPJwqAAAAAIMFCNPE9u8yA1Mkot6Bl6ekDL20';  // Ganti dengan Secret Key Anda
 
-// Endpoint untuk memverifikasi reCAPTCHA di backend
+const SECRET_KEY = 'secret-key';  
+
+
 app.post('/verify-recaptcha', async (req, res) => {
-    const userResponse = req.body['g-recaptcha-response'];  // Token dari frontend
-    console.log('Token received from frontend:', userResponse); // Log token
+    const userResponse = req.body['g-recaptcha-response'];  
+    console.log('Token received from frontend:', userResponse); 
 
     // Pastikan token ada
     if (!userResponse) {
