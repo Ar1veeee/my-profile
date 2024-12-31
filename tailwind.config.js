@@ -28,6 +28,8 @@ module.exports = {
       colors: {
         primary: "#6366f1",
         secondary: "#64748b",
+        customPurple: "#8739F9",
+        customPink: "#C651CD",
         dark: "#0f172a",
       },
       screens: {
