@@ -46,8 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const images = document.querySelectorAll(".img");
   const imageSlider = document.querySelector(".image-slider");
   buttons.forEach((button, index) => {
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
+    button.addEventListener("mouseover", () => {
       // Reset all images and buttons to default state
       images.forEach((img) => {
         img.style.transform = "scale(1)";
@@ -56,12 +55,12 @@ document.addEventListener("DOMContentLoaded", () => {
       buttons.forEach((btn) => {
         btn.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
       });
-      // Scale the clicked image
+      // Scale the hovered image
       images[index].style.transform = "scale(1.3)";
       images[index].style.filter = "saturate(100%)";
-      // Remove background color from the clicked button
+      // Remove background color from the hovered button
       button.style.backgroundColor = "transparent";
-      // Move the image-slider based on which button is clicked
+      // Move the image-slider based on which button is hovered
       switch (index) {
         case 0:
           imageSlider.style.left = "25%";
@@ -97,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const chatIcon = document.getElementById("chat-icon");
