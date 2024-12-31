@@ -192,9 +192,9 @@ function showLoader() {
   const successPopup = document.getElementById("popup-success");
 
   // Tampilkan container dan loader
-  container.classList.remove("hidden");
-  loader.classList.remove("hidden");
-  successPopup.classList.add("hidden");
+  container.classList.remove("hidden-popup");
+  loader.classList.remove("hidden-popup");
+  successPopup.classList.add("hidden-popup");
 }
 
 function showSuccessPopup() {
@@ -202,13 +202,13 @@ function showSuccessPopup() {
   const successPopup = document.getElementById("popup-success");
 
   // Sembunyikan loader dan tampilkan success popup
-  loader.classList.add("hidden");
-  successPopup.classList.remove("hidden");
+  loader.classList.add("hidden-popup");
+  successPopup.classList.remove("hidden-popup");
 }
 
 function hidePopupContainer() {
   const container = document.getElementById("popup-container");
-  container.classList.add("hidden");
+  container.classList.add("hidden-popup");
 }
 
 function closePopup() {

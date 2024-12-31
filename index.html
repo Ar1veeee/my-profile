@@ -61,7 +61,7 @@
 
         }
 
-        .hidden {
+        .hidden-popup {
             display: none !important;
         }
 
@@ -239,31 +239,31 @@
                         <ul class="block lg:flex">
                             <li class="group">
                                 <a href="#home"
-                                    class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-customP">
+                                    class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-primary dark:group-hover:text-customPurple">
                                     Beranda
                                 </a>
                             </li>
                             <li class="group">
                                 <a href="#about"
-                                    class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-customP">
+                                    class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-primary dark:group-hover:text-customPurple">
                                     About
                                 </a>
                             </li>
                             <li class="group">
                                 <a href="#portfolio"
-                                    class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-customP">
+                                    class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-primary dark:group-hover:text-customPurple">
                                     Portfolio
                                 </a>
                             </li>
                             <li class="group">
                                 <a href="#skills"
-                                    class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-customP">
+                                    class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-primary dark:group-hover:text-customPurple">
                                     Skills
                                 </a>
                             </li>
                             <li class="group">
                                 <a href="#contact"
-                                    class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-customP">
+                                    class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-primary dark:group-hover:text-customPurple">
                                     Contact
                                 </a>
                             </li>
@@ -1086,11 +1086,11 @@
                 </div>
             </div>
 
-            <div id="popup-container" class="fixed top-0 left-0 w-full h-full flex items-center justify-center hidden">
+            <div id="popup-container" class="fixed top-0 left-0 w-full h-full flex items-center justify-center hidden-popup">
                 <!-- Popup Box -->
                 <div class="bg-white p-4 rounded-md shadow-md text-center max-w-xs w-full">
                     <!-- Loader Animation -->
-                    <div id="loader" class="loader hidden">
+                    <div id="loader" class="loader">
                         <div class="dot"></div>
                         <div class="dot"></div>
                         <div class="dot"></div>
@@ -1099,7 +1099,7 @@
                     </div>
 
                     <!-- Success Message -->
-                    <div id="popup-success" class="hidden">
+                    <div id="popup-success" class=">
                         <h3 class="font-bold text-lg text-green-600 mb-3">Message Sent!</h3>
                         <div class="flex justify-center mb-4">
                             <img src="dist/img/success.png" alt="success" width="50px">
