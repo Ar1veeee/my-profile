@@ -170,26 +170,52 @@ const form = document.forms["profile-contact-form"];
 function submitForm(event) {
   event.preventDefault();
 
+  // Tampilkan loader
+  showLoader();
+
   fetch(scriptURL, { method: "POST", body: new FormData(form) })
     .then((response) => {
       console.log("Success!", response);
-      showPopup();
+      showSuccessPopup();
       clearForm();
     })
     .catch((error) => {
       console.error("Error!", error.message);
       alert("Terjadi kesalahan saat mengirim pesan.");
+      hidePopupContainer();
     });
 }
 
-function showPopup() {
-  document.getElementById("popup-success").classList.remove("hidden");
+function showLoader() {
+  const container = document.getElementById("popup-container");
+  const loader = document.getElementById("loader");
+  const successPopup = document.getElementById("popup-success");
+
+  // Tampilkan container dan loader
+  container.classList.remove("hidden");
+  loader.classList.remove("hidden");
+  successPopup.classList.add("hidden");
+}
+
+function showSuccessPopup() {
+  const loader = document.getElementById("loader");
+  const successPopup = document.getElementById("popup-success");
+
+  // Sembunyikan loader dan tampilkan success popup
+  loader.classList.add("hidden");
+  successPopup.classList.remove("hidden");
+}
+
+function hidePopupContainer() {
+  const container = document.getElementById("popup-container");
+  container.classList.add("hidden");
 }
 
 function closePopup() {
-  document.getElementById("popup-success").classList.add("hidden");
+  hidePopupContainer();
 }
 
 function clearForm() {
   form.reset();
 }
+

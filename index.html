@@ -61,6 +61,11 @@
 
         }
 
+        .hidden {
+            display: none !important;
+        }
+
+
         .blur-bg {
             position: absolute;
             inset-block-start: 0;
@@ -95,6 +100,19 @@
             background: rgba(0, 0, 0, 0.4);
         }
 
+        #popup-container {
+            position: fixed;            
+            inset-block-start: 0;
+            inset-inline-start: 0;
+            inline-size: 100%;
+            block-size: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.5);            
+            z-index: 9999;
+        }
+
         .project-card:hover .project-image {
             filter: blur(0);
         }
@@ -102,8 +120,47 @@
         .project-card:hover .hover-content {
             opacity: 1;
         }
-        .ungu{
-            color: #8739F9;
+
+        .loader {
+            display: flex;
+            justify-content: center;
+            margin: 20px auto;
+        }
+
+        .loader .dot {
+            block-size: 20px;
+            inline-size: 20px;
+            border-radius: 50%;
+            border: 2px solid #e8e8e8;
+            background: #16b0c1;
+            animation: jump 0.8s ease-in-out infinite alternate;
+        }
+
+        @keyframes jump {
+            100% {
+                background: #661e92;
+                transform: translateZ(-3rem) scale(1.9);
+            }
+        }
+
+        .loader .dot:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .loader .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loader .dot:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .loader .dot:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .loader .dot:nth-child(5) {
+            animation-delay: 0.5s;
         }
 
         @media (min-width: 1280px) {
@@ -346,7 +403,8 @@
 
                 </div>
                 <div class="w-full px-4 lg:w-1/2 animate-fade-in-right">
-                    <h3 class="font-semibold text-primary text-3xl lg:text-4xl mb-6 dark:text-customPurple">Experience</h3>
+                    <h3 class="font-semibold text-primary text-3xl lg:text-4xl mb-6 dark:text-customPurple">Experience
+                    </h3>
                     <div class="">
                         <h2 class="font-medium text-primary text-lg mb-1 lg:text-2xl dark:text-customPurple">2022
                             <span class="text-dark dark:text-white">Linux+ Certification</span>
@@ -1028,22 +1086,34 @@
                 </div>
             </div>
 
-            <!-- Alert Popup Start -->
-            <div id="popup-success" class="fixed top-0 left-0 w-full h-full flex items-center justify-center hidden">
-                <div class="bg-white p-4 rounded-md shadow-md text-center max-w-xs w-full animate-popup">
-                    <h3 class="font-bold text-lg text-green-600 mb-3">Message Sent!</h3>
-                    <div class="flex justify-center mb-4">
-                        <img src="dist/img//success.png" alt="success" width="50px">
+            <div id="popup-container" class="fixed top-0 left-0 w-full h-full flex items-center justify-center hidden">
+                <!-- Popup Box -->
+                <div class="bg-white p-4 rounded-md shadow-md text-center max-w-xs w-full">
+                    <!-- Loader Animation -->
+                    <div id="loader" class="loader hidden">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
                     </div>
-                    <p class="text-gray-700 mb-3 text-sm">Thank you for reaching out to me. I will respond to your
-                        message promptly.</p>
-                    <button onclick="closePopup()"
-                        class="bg-primary text-white py-1 px-4 rounded hover:bg-opacity-80 transition duration-300">
-                        Tutup
-                    </button>
+
+                    <!-- Success Message -->
+                    <div id="popup-success" class="hidden">
+                        <h3 class="font-bold text-lg text-green-600 mb-3">Message Sent!</h3>
+                        <div class="flex justify-center mb-4">
+                            <img src="dist/img/success.png" alt="success" width="50px">
+                        </div>
+                        <p class="text-gray-700 mb-3 text-sm">Thank you for reaching out to me. I will respond to your
+                            message promptly.</p>
+                        <button onclick="closePopup()"
+                            class="bg-primary text-white py-1 px-4 rounded hover:bg-opacity-80 transition duration-300">
+                            Tutup
+                        </button>
+                    </div>
                 </div>
             </div>
-            <!-- Alert Popup End -->
+
 
             <!-- Form Start -->
             <form name="profile-contact-form" id="profile-contact-form" action="#" onsubmit="submitForm(event)">
@@ -1059,7 +1129,8 @@
                             class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
                     </div>
                     <div class="w-full px-4 mb-8">
-                        <label for="message" class="text-base font-bold text-primary dark:text-customPurple">Pesan</label>
+                        <label for="message"
+                            class="text-base font-bold text-primary dark:text-customPurple">Pesan</label>
                         <textarea id="message" name="message"
                             class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary h-32"></textarea>
                     </div>
