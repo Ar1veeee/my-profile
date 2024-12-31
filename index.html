@@ -896,52 +896,52 @@
                             <div class="slide-div">
                                 <img src="https://storage.googleapis.com/alief-profile/icons/html.png" alt="image1"
                                     class="img">
-                                <a href="#" class="button"></a>
+                                <a class="button"></a>
                             </div>
                             <div class="slide-div">
                                 <img src="https://storage.googleapis.com/alief-profile/icons/css.png" alt="image2"
                                     class="img">
-                                <a href="#" class="button"></a>
+                                <a class="button"></a>
                             </div>
                             <div class="slide-div">
                                 <img src="https://storage.googleapis.com/alief-profile/icons/javascript.png"
                                     alt="image3" class="img">
-                                <a href="#" class="button"></a>
+                                <a class="button"></a>
                             </div>
                             <div class="slide-div">
                                 <img src="https://storage.googleapis.com/alief-profile/icons/tailwind.png" alt="image4"
                                     class="img">
-                                <a href="#" class="button"></a>
+                                <a class="button"></a>
                             </div>
                             <div class="slide-div">
                                 <img src="https://storage.googleapis.com/alief-profile/icons/bootstrap.png" alt="image5"
                                     class="img">
-                                <a href="#" class="button"></a>
+                                <a class="button"></a>
                             </div>
                             <div class="slide-div">
                                 <img src="https://storage.googleapis.com/alief-profile/icons/node-js.png" alt="image6"
                                     class="img">
-                                <a href="#" class="button"></a>
+                                <a class="button"></a>
                             </div>
                             <div class="slide-div">
                                 <img src="https://storage.googleapis.com/alief-profile/icons/php.png" alt="image7"
                                     class="img">
-                                <a href="#" class="button"></a>
+                                <a class="button"></a>
                             </div>
                             <div class="slide-div">
                                 <img src="https://storage.googleapis.com/alief-profile/icons/gcloud.png" alt="image8"
                                     class="img">
-                                <a href="#" class="button"></a>
+                                <a class="button"></a>
                             </div>
                             <div class="slide-div">
                                 <img src="https://storage.googleapis.com/alief-profile/icons/ci.png" alt="image9"
                                     class="img">
-                                <a href="#" class="button"></a>
+                                <a class="button"></a>
                             </div>
                             <div class="slide-div">
                                 <img src="https://storage.googleapis.com/alief-profile/icons/laravel.png" alt="image10"
                                     class="img">
-                                <a href="#" class="button"></a>
+                                <a class="button"></a>
                             </div>
                         </div>
                     </div>
@@ -1211,76 +1211,7 @@
 
     <script src="dist/js/script.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwHpebIuLS8tdxeU5MhzraFT3zdMX78_krEqcBpwSaQ9NGQ-H_JsovCNQCAMUxqGuA45w/exec';
-        const form = document.forms['profile-contact-form'];
-
-        function submitForm(event) {
-            event.preventDefault();
-
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => {
-                    console.log('Success!', response);
-                    showPopup();
-                    clearForm();
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    alert('Terjadi kesalahan saat mengirim pesan.');
-                });
-        }
-
-        function showPopup() {
-            document.getElementById('popup-success').classList.remove('hidden');
-        }
-
-        function closePopup() {
-            document.getElementById('popup-success').classList.add('hidden');
-        }
-
-        function clearForm() {
-            form.reset();
-        }
-    </script>
-
-    <script>
-        function showAlert(event) {
-            event.preventDefault();
-        }
-    </script>
     <script src="https://www.google.com/recaptcha/api.js?render=site-key"></script>
-    <script>
-        function showAlert(event) {
-            event.preventDefault();
-            grecaptcha.ready(function () {
-                grecaptcha.execute('site-key', { action: 'submit' }).then(function (token) {
-                    console.log('Token:', token);
-
-
-                    fetch('http://127.0.0.1:8080/verify-recaptcha', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ 'g-recaptcha-response': token }),
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                alert('Pesan berhasil dikirim!');
-                                document.forms['profile-contact-form'].submit();
-                            } else {
-                                alert('Verifikasi reCAPTCHA gagal: ' + data.message);
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error during verification:', error);
-                            alert('Terjadi kesalahan selama proses verifikasi.');
-                        });
-                });
-            });
-        }
-    </script>
 </body>
 
 </html>

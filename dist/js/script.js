@@ -40,14 +40,13 @@ AOS.init({
   once: true,
 });
 
+// Image Slider
 document.addEventListener("DOMContentLoaded", () => {
-  // Get all buttons and images
   const buttons = document.querySelectorAll(".button");
   const images = document.querySelectorAll(".img");
   const imageSlider = document.querySelector(".image-slider");
   buttons.forEach((button, index) => {
     button.addEventListener("mouseover", () => {
-      // Reset all images and buttons to default state
       images.forEach((img) => {
         img.style.transform = "scale(1)";
         img.style.filter = "saturate(10%)";
@@ -55,12 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
       buttons.forEach((btn) => {
         btn.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
       });
-      // Scale the hovered image
       images[index].style.transform = "scale(1.3)";
       images[index].style.filter = "saturate(100%)";
-      // Remove background color from the hovered button
       button.style.backgroundColor = "transparent";
-      // Move the image-slider based on which button is hovered
       switch (index) {
         case 0:
           imageSlider.style.left = "25%";
@@ -97,51 +93,103 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const chatIcon = document.getElementById("chat-icon");
   const chatText = document.getElementById("chat-text");
   const notificationBadge = document.getElementById("notification-badge");
   const notificationSound = document.getElementById("notification-sound");
 
-  let isTextVisible = false; // Status untuk mengecek apakah teks sedang ditampilkan
+  let isTextVisible = false;
 
-  // Tampilkan animasi ikon saat halaman dimuat
   setTimeout(() => {
     chatIcon.classList.remove("translate-x-full", "opacity-0");
     chatIcon.classList.add("translate-x-0", "opacity-100");
   }, 500);
 
-  // Event klik pada ikon chat
   chatIcon.addEventListener("click", () => {
     if (!isTextVisible) {
-      // Tampilkan teks chat
       chatText.classList.remove("hidden", "translate-x-full", "opacity-0");
       chatText.classList.add("translate-x-0", "opacity-100");
 
-      // Putar audio (jika ada)
       if (notificationSound) {
         notificationSound.play().catch((error) => {
           console.log("Audio initialization failed:", error);
         });
       }
 
-      // Hilangkan badge notifikasi
       if (notificationBadge) {
         notificationBadge.classList.add("hidden");
       }
     } else {
-      // Sembunyikan teks chat
       chatText.classList.remove("translate-x-0", "opacity-100");
       chatText.classList.add("translate-x-full", "opacity-0");
 
-      // Tambahkan kembali badge notifikasi jika diperlukan
       if (notificationBadge) {
         notificationBadge.classList.remove("hidden");
       }
     }
 
-    // Ubah status visibilitas teks
     isTextVisible = !isTextVisible;
   });
 });
+
+function showAlert(event) {
+  event.preventDefault();
+  grecaptcha.ready(function () {
+    grecaptcha.execute("site-key", { action: "submit" }).then(function (token) {
+      console.log("Token:", token);
+
+      fetch("http://127.0.0.1:8080/verify-recaptcha", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ "g-recaptcha-response": token }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            alert("Pesan berhasil dikirim!");
+            document.forms["profile-contact-form"].submit();
+          } else {
+            alert("Verifikasi reCAPTCHA gagal: " + data.message);
+          }
+        })
+        .catch((error) => {
+          console.error("Error during verification:", error);
+          alert("Terjadi kesalahan selama proses verifikasi.");
+        });
+    });
+  });
+}
+
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbwHpebIuLS8tdxeU5MhzraFT3zdMX78_krEqcBpwSaQ9NGQ-H_JsovCNQCAMUxqGuA45w/exec";
+const form = document.forms["profile-contact-form"];
+
+function submitForm(event) {
+  event.preventDefault();
+
+  fetch(scriptURL, { method: "POST", body: new FormData(form) })
+    .then((response) => {
+      console.log("Success!", response);
+      showPopup();
+      clearForm();
+    })
+    .catch((error) => {
+      console.error("Error!", error.message);
+      alert("Terjadi kesalahan saat mengirim pesan.");
+    });
+}
+
+function showPopup() {
+  document.getElementById("popup-success").classList.remove("hidden");
+}
+
+function closePopup() {
+  document.getElementById("popup-success").classList.add("hidden");
+}
+
+function clearForm() {
+  form.reset();
+}
