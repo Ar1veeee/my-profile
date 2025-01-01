@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Notification
 document.addEventListener("DOMContentLoaded", () => {
   const chatIcon = document.getElementById("chat-icon");
   const chatText = document.getElementById("chat-text");
@@ -133,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Recaptcha Handler
 function showAlert(event) {
   event.preventDefault();
   grecaptcha.ready(function () {
@@ -163,6 +165,7 @@ function showAlert(event) {
   });
 }
 
+// Contact Section
 const scriptURL =
   "https://script.google.com/macros/s/AKfycbwHpebIuLS8tdxeU5MhzraFT3zdMX78_krEqcBpwSaQ9NGQ-H_JsovCNQCAMUxqGuA45w/exec";
 const form = document.forms["profile-contact-form"];
@@ -170,7 +173,6 @@ const form = document.forms["profile-contact-form"];
 function submitForm(event) {
   event.preventDefault();
 
-  // Tampilkan loader
   showLoader();
 
   fetch(scriptURL, { method: "POST", body: new FormData(form) })
@@ -191,7 +193,6 @@ function showLoader() {
   const loader = document.getElementById("loader");
   const successPopup = document.getElementById("popup-success");
 
-  // Tampilkan container dan loader
   container.classList.remove("hidden-popup");
   loader.classList.remove("hidden-popup");
   successPopup.classList.add("hidden-popup");
@@ -200,10 +201,14 @@ function showLoader() {
 function showSuccessPopup() {
   const loader = document.getElementById("loader");
   const successPopup = document.getElementById("popup-success");
+  const successAudio = document.getElementById("success-audio");
 
-  // Sembunyikan loader dan tampilkan success popup
   loader.classList.add("hidden-popup");
   successPopup.classList.remove("hidden-popup");
+
+  successAudio.play().catch((error) => {
+    console.error("Audio play failed:", error);
+  });
 }
 
 function hidePopupContainer() {
@@ -218,4 +223,3 @@ function closePopup() {
 function clearForm() {
   form.reset();
 }
-
