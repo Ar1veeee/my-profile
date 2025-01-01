@@ -173,6 +173,15 @@ const form = document.forms["profile-contact-form"];
 function submitForm(event) {
   event.preventDefault();
 
+  const emailInput = form.email.value;
+
+  // Validasi Email
+  if (!validateEmail(emailInput)) {
+    showFailedPopup(); // Tampilkan popup error
+    return;
+  }
+
+  // Tampilkan loader
   showLoader();
 
   fetch(scriptURL, { method: "POST", body: new FormData(form) })
@@ -183,21 +192,30 @@ function submitForm(event) {
     })
     .catch((error) => {
       console.error("Error!", error.message);
-      alert("Terjadi kesalahan saat mengirim pesan.");
-      hidePopupContainer();
+      showFailedPopup(); // Tampilkan popup error jika gagal
     });
 }
 
+// Fungsi Validasi Email
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.(com|org|net|io|gov|id|us|in|au|uk|de|ru|jp|cn|ca|fr)$/i;
+  return emailRegex.test(email);
+}
+
+// Fungsi Menampilkan Loader
 function showLoader() {
   const container = document.getElementById("popup-container");
   const loader = document.getElementById("loader");
   const successPopup = document.getElementById("popup-success");
+  const failedPopup = document.getElementById("popup-failed");
 
   container.classList.remove("hidden-popup");
   loader.classList.remove("hidden-popup");
   successPopup.classList.add("hidden-popup");
+  failedPopup.classList.add("hidden-popup");
 }
 
+// Fungsi Menampilkan Popup Sukses
 function showSuccessPopup() {
   const loader = document.getElementById("loader");
   const successPopup = document.getElementById("popup-success");
@@ -211,15 +229,35 @@ function showSuccessPopup() {
   });
 }
 
+// Fungsi Menampilkan Popup Gagal
+function showFailedPopup() {
+  const container = document.getElementById("popup-container");
+  const loader = document.getElementById("loader");
+  const failedPopup = document.getElementById("popup-failed");
+  const failedAudio = document.getElementById("failed-audio");
+
+  container.classList.remove("hidden-popup");
+  loader.classList.add("hidden-popup");
+  failedPopup.classList.remove("hidden-popup");
+
+  failedAudio.play().catch((error) => {
+    console.error("Audio play failed:", error);
+  });
+}
+
+// Fungsi Menyembunyikan Popup
 function hidePopupContainer() {
   const container = document.getElementById("popup-container");
   container.classList.add("hidden-popup");
+  
 }
 
+// Fungsi Menutup Popup
 function closePopup() {
   hidePopupContainer();
 }
 
+// Fungsi Membersihkan Form
 function clearForm() {
   form.reset();
 }

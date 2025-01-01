@@ -1099,7 +1099,7 @@
                     </div>
 
                     <!-- Success Message -->
-                    <div id="popup-success" class="bg-white p-4 rounded-md shadow-md">
+                    <div id="popup-success" class="bg-white p-4 rounded-md shadow-md hidden-popup">
                         <h3 class="font-bold text-lg text-green-600 mb-3">Message Sent!</h3>
                         <div class="flex justify-center mb-4">
                             <img src="dist/img/success.png" alt="success" width="50px">
@@ -1107,14 +1107,29 @@
                         <p class="text-gray-700 mb-3 text-sm">Thank you for reaching out to me. I will respond to your
                             message promptly.</p>
                         <button onclick="closePopup()"
-                            class="bg-primary text-white py-1 px-4 rounded hover:bg-opacity-80 transition duration-300">
-                            Tutup
+                            class="bg-primary dark:bg-customPurple text-white py-1 px-4 rounded hover:bg-opacity-80 transition duration-300">
+                            Close
                         </button>
-                    </div>
+                    </div>    
+
+                    <div id="popup-failed" class="bg-white p-4 rounded-md shadow-md hidden-popup">
+                        <h3 class="font-bold text-lg text-red-600 mb-3">Message Failed!</h3>
+                        <div class="flex justify-center mb-4">
+                            <img src="dist/img/failed.png" alt="failed" width="50px">
+                        </div>
+                        <p class="text-gray-700 mb-3 text-sm">
+                            Please provide a valid email address and try again.
+                        </p>
+                        <button onclick="closePopup()"
+                            class="bg-red-600 text-white py-1 px-4 rounded hover:bg-opacity-80 transition duration-300">
+                            Close
+                        </button>
+                    </div>              
                 </div>
             </div>
 
             <audio id="success-audio" src="dist/audio/success.wav" preload="auto"></audio>
+            <audio id="failed-audio" src="dist/audio/failed.wav" preload="auto"></audio>
 
             <!-- Form Start -->
             <form name="profile-contact-form" id="profile-contact-form" action="#" onsubmit="submitForm(event)">
