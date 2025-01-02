@@ -167,7 +167,7 @@ function showAlert(event) {
 
 // Contact Section
 const scriptURL =
-  "https://script.google.com/macros/s/AKfycbwHpebIuLS8tdxeU5MhzraFT3zdMX78_krEqcBpwSaQ9NGQ-H_JsovCNQCAMUxqGuA45w/exec";
+  "https://script.google.com/macros/s/AKfycbw66VoFTXePOAfOTE4j0XMjK-0pjXs8vQsMc0MviR64NOCYQkBB1y04jOY6GQ6mDXKCVQ/exec";
 const form = document.forms["profile-contact-form"];
 
 function submitForm(event) {
@@ -177,11 +177,11 @@ function submitForm(event) {
 
   // Validasi Email
   if (!validateEmail(emailInput)) {
-    showFailedPopup(); // Tampilkan popup error
+    showFailedPopup(); 
     return;
   }
 
-  // Tampilkan loader
+  
   showLoader();
 
   fetch(scriptURL, { method: "POST", body: new FormData(form) })
@@ -192,38 +192,48 @@ function submitForm(event) {
     })
     .catch((error) => {
       console.error("Error!", error.message);
-      showFailedPopup(); // Tampilkan popup error jika gagal
+      showFailedPopup(); 
     });
 }
 
 // Fungsi Validasi Email
 function validateEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.(com|org|net|io|gov|id|us|in|au|uk|de|ru|jp|cn|ca|fr)$/i;
+  const emailRegex =
+    /^[^\s@]+@[^\s@]+\.(com|org|net|io|gov|id|us|in|au|uk|de|ru|jp|cn|ca|fr)$/i;
   return emailRegex.test(email);
+}
+
+// Fungsi Reset Semua Popup
+function resetPopups() {
+  const loader = document.getElementById("loader");
+  const successPopup = document.getElementById("popup-success");
+  const failedPopup = document.getElementById("popup-failed");
+  
+  loader.classList.add("hidden-popup");
+  successPopup.classList.add("hidden-popup");
+  failedPopup.classList.add("hidden-popup");
 }
 
 // Fungsi Menampilkan Loader
 function showLoader() {
   const container = document.getElementById("popup-container");
-  const loader = document.getElementById("loader");
-  const successPopup = document.getElementById("popup-success");
-  const failedPopup = document.getElementById("popup-failed");
 
+  resetPopups();
   container.classList.remove("hidden-popup");
+  const loader = document.getElementById("loader");
   loader.classList.remove("hidden-popup");
-  successPopup.classList.add("hidden-popup");
-  failedPopup.classList.add("hidden-popup");
 }
 
 // Fungsi Menampilkan Popup Sukses
 function showSuccessPopup() {
-  const loader = document.getElementById("loader");
-  const successPopup = document.getElementById("popup-success");
-  const successAudio = document.getElementById("success-audio");
+  const container = document.getElementById("popup-container");
 
-  loader.classList.add("hidden-popup");
+  resetPopups();
+  container.classList.remove("hidden-popup");
+  const successPopup = document.getElementById("popup-success");
   successPopup.classList.remove("hidden-popup");
 
+  const successAudio = document.getElementById("success-audio");
   successAudio.play().catch((error) => {
     console.error("Audio play failed:", error);
   });
@@ -232,29 +242,22 @@ function showSuccessPopup() {
 // Fungsi Menampilkan Popup Gagal
 function showFailedPopup() {
   const container = document.getElementById("popup-container");
-  const loader = document.getElementById("loader");
-  const failedPopup = document.getElementById("popup-failed");
-  const failedAudio = document.getElementById("failed-audio");
 
+  resetPopups();
   container.classList.remove("hidden-popup");
-  loader.classList.add("hidden-popup");
+  const failedPopup = document.getElementById("popup-failed");
   failedPopup.classList.remove("hidden-popup");
 
+  const failedAudio = document.getElementById("failed-audio");
   failedAudio.play().catch((error) => {
     console.error("Audio play failed:", error);
   });
 }
 
-// Fungsi Menyembunyikan Popup
-function hidePopupContainer() {
-  const container = document.getElementById("popup-container");
-  container.classList.add("hidden-popup");
-  
-}
-
 // Fungsi Menutup Popup
 function closePopup() {
-  hidePopupContainer();
+  const container = document.getElementById("popup-container");
+  container.classList.add("hidden-popup");
 }
 
 // Fungsi Membersihkan Form

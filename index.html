@@ -22,7 +22,7 @@
             inline-size: 100%;
             block-size: 160px;
             position: absolute;
-            left: 0;
+            inset-inline-start: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -101,7 +101,7 @@
         }
 
         #popup-container {
-            position: fixed;            
+            position: fixed;
             inset-block-start: 0;
             inset-inline-start: 0;
             inline-size: 100%;
@@ -109,9 +109,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgba(0, 0, 0, 0.5);            
+            background-color: rgba(0, 0, 0, 0.5); 
+            -webkit-backdrop-filter: blur(3px); 
+            backdrop-filter: blur(3px); 
             z-index: 9999;
         }
+        
 
         .project-card:hover .project-image {
             filter: blur(0);
@@ -167,6 +170,9 @@
             .skill-mobile {
                 display: none;
             }
+            .hidden-mobile{
+                display: none;
+            }
 
             #portfolio-mobile {
                 display: none;
@@ -178,7 +184,7 @@
         }
 
         @media (max-width: 1280px) {
-            #portfolio {
+            #portfolio-dekstop {
                 display: none;
             }
 
@@ -201,11 +207,14 @@
             .button {
                 display: none;
             }
+            .hidden-dekstop{
+                display: none;
+            }
         }
     </style>
 </head>
 
-<body class="dark:bg-slate-800 dark:text-white font-rubik">
+<body class="dark:bg-slate-800 dark:text-white font-rubik" onclick="closePopup()">
     <!-- Navbar Start -->
     <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
         <div class="container">
@@ -219,8 +228,8 @@
                     <span class="text-slate-500 text-sm mr-2 ">light</span>
                     <input type="checkbox" id="toggle" class="hidden">
                     <label for="toggle">
-                        <div class="w-9 h-5 bg-primary dark:bg-customPurple rounded-full flex items-center p-1 cursor-pointer">
-                            <div class="w-4 h-4 bg-white rounded-full toggle-circle"></div>
+                        <div class="w-9 h-5 bg-slate-300 rounded-full flex items-center p-1 cursor-pointer">
+                            <div class="w-4 h-4 bg-customPurple dark:bg-white rounded-full toggle-circle"></div>
                         </div>
                     </label>
                     <span class="text-slate-500 text-sm ml-2 ">dark</span>
@@ -249,8 +258,14 @@
                                     About
                                 </a>
                             </li>
-                            <li class="group">
-                                <a href="#portfolio"
+                            <li class="group hidden-dekstop">
+                                <a href="#portfolio-dekstop"
+                                    class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-primary dark:group-hover:text-customPurple">
+                                    Portfolio
+                                </a>
+                            </li>
+                            <li class="group hidden-mobile">
+                                <a href="#portfolio-mobile"
                                     class="text-base text-dark dark:text-white py-2 mx-8 flex group-hover:text-primary dark:group-hover:text-customPurple">
                                     Portfolio
                                 </a>
@@ -287,7 +302,7 @@
                             Alief Arifin Mahardiko
                         </span>
                     </h1>
-                    <h2 class="font-medium text-secondary text-lg mb-5 lg:text-2xl">
+                    <h2 class="font-medium text-secondary dark:text-slate-400 text-lg mb-5 lg:text-2xl">
                         Student & <span class="text-dark dark:text-white">Fullstack Developer</span>
                     </h2>
                     <p class="font-medium text-slate-400 mb-10 leading-relaxed">
@@ -324,14 +339,14 @@
     <!-- Home section End -->
 
     <!-- About section Start -->
-    <section id="about" class="pt-36 pb-32">
+    <section id="about" class="pt-36 pb-40">
         <div class="container">
             <div class="flex flex-wrap">
                 <div class="w-full px-4 mb-10 lg:w-1/2 animate-fade-in-left">
                     <h4 class="font-bold uppercase text-primary dark:text-customPurple text-3xl mb-3 lg:text-4xl">
                         About me
                     </h4>
-                    <p class="font-medium text-base text-secondary max-w-xl lg:text-lg text-justify">
+                    <p class="font-medium text-base text-secondary dark:text-slate-400 max-w-xl lg:text-lg text-justify">
                         Hi, my name is Alief Arifin Mahardiko. I am a mid-semester student majoring
                         in Information Systems who has an interest in software development
                         and cloud computing. Experienced in building and managing RESTful APIs,
@@ -444,7 +459,7 @@
     <!-- About section End -->
 
     <!-- Portfolio Start-->
-    <section id="portfolio" class="pt-36 pb-16 bg-slate-100 dark:bg-slate-800 dark:text-white">
+    <section id="portfolio-dekstop" class="pt-36 pb-16 bg-slate-100 dark:bg-slate-800 dark:text-white">
         <div class="container">
 
             <!-- Text Section Start-->
@@ -452,7 +467,7 @@
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2 dark:text-customPurple">Portfolio</h4>
                     <h2 class="font-bold text-dark text-3xl mb-4 dark:text-white">My Projects</h2>
-                    <p class="font-medium text-md text-secondary ">
+                    <p class="font-medium text-md text-secondary dark:text-slate-400">
                         Explore some of my projects that showcase my skills and expertise in different technologies and
                         programming languages.
                     </p>
@@ -697,7 +712,7 @@
     </section>
 
 
-    <section id="portfolio-mobile" class="pt-36 pb-16 bg-slate-100 dark:bg-slate-800 dark:text-white">
+    <section id="portfolio-mobile" class="pt-36 pb-40 bg-slate-100 dark:bg-slate-800 dark:text-white">
         <div class="container">
 
             <!-- Text Section Start-->
@@ -705,7 +720,7 @@
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Portfolio</h4>
                     <h2 class="font-bold text-dark text-3xl mb-4 dark:text-white">My Projects</h2>
-                    <p class="font-medium text-md text-secondary">
+                    <p class="font-medium text-md text-secondary dark:text-slate-400">
                         Explore some of my projects that showcase my
                         skills and expertise in different technologies and programming languages.
                     </p>
@@ -724,7 +739,7 @@
                                 alt="Ekspedisi" width="w-full">
                         </div>
                         <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Expedition Website</h3>
-                        <p class="font-medium text-base text-secondary">
+                        <p class="font-medium text-base text-secondary dark:text-slate-400">
                             An expedition service website with transaction features and prices that can be adjusted
                             based on the distance, weight, type of delivery chosen.
                         </p>
@@ -756,7 +771,7 @@
                                 width="w-full">
                         </div>
                         <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">UMKM Website</h3>
-                        <p class="font-medium text-base text-secondary">
+                        <p class="font-medium text-base text-secondary dark:text-slate-400">
                             an UMKM website with transaction features, messages, viewing menus that can help
                             UMKM traders manage their business computationally.
                         </p>
@@ -788,7 +803,7 @@
                                 width="w-full">
                         </div>
                         <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Weather App</h3>
-                        <p class="font-medium text-base text-secondary">
+                        <p class="font-medium text-base text-secondary dark:text-slate-400">
                             A web-based weather application to view up-to-date weather information from OpenWeatherAPI
                             based on the entered city,
                             including temperature, humidity, wind speed, and atmospheric pressure, and a moving
@@ -819,7 +834,7 @@
                                 width="w-full">
                         </div>
                         <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">To Do List</h3>
-                        <p class="font-medium text-base text-secondary">
+                        <p class="font-medium text-base text-secondary dark:text-slate-400">
                             A web-based Todo List application that allows users to add, edit, complete,
                             and delete tasks, with data stored in localStorage to retain tasks even if the page is
                             refreshed.
@@ -846,7 +861,7 @@
                                 alt="Ekspedisi" width="w-full">
                         </div>
                         <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Skinory-APIs</h3>
-                        <p class="font-medium text-base text-secondary">
+                        <p class="font-medium text-base text-secondary dark:text-slate-400">
                             A RESTful-API and backend system for Skinory Mobile apps to helps users monitor
                             their daily skincare routine.
                         </p>
@@ -878,7 +893,7 @@
                                 alt="Ekspedisi" width="w-full">
                         </div>
                         <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Air Quality IoT</h3>
-                        <p class="font-medium text-base text-secondary">
+                        <p class="font-medium text-base text-secondary dark:text-slate-400">
                             An IoT device that detects Carbon monoxide, sulfur dioxide,
                             humidity, and temperature in the surrounding area.
                         </p>
@@ -901,7 +916,7 @@
                                 alt="Ekspedisi" width="w-full">
                         </div>
                         <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Smartfins IoT</h3>
-                        <p class="font-medium text-base text-secondary">
+                        <p class="font-medium text-base text-secondary dark:text-slate-400">
                             An IoT device that detects dissolved oxygen content,
                             Ph level, and water temperature in freshwater fish ponds.
                         </p>
@@ -937,12 +952,12 @@
     <!-- Skills Start -->
     <section id="skills" class="pt-10 pb-40 bg-slate-700">
         <div class="container mx-auto px-4">
-            <div class="flex flex-wrap">
+            <div class="flex flex-wrap mt-20 xl:my-20">
                 <!-- Text Section Start-->
                 <div class="w-full xl:mx-20 text-center mb-10 lg:mb-0">
                     <h2 class="text-3xl font-bold text-primary mb-4 dark:text-customPurple">My Skills</h2>
                     <p class="text-base font-medium text-slate-300">
-                        I am skilled in creating stunning web applications using HTML, CSS, Javascript, Tailwind, and
+                        I am skilled in creating stunning web applications using HTML, CSS, Javascript, Tailwind CSS, and
                         Bootstrap. Additionally, I am currently deepening my expertise in back-end and API development
                         with Node JS, Google Cloud, and Firebase, as well as designing captivating user interfaces with
                         Figma.
@@ -1078,7 +1093,7 @@
                     <h2 class="font-bold text-primary text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-customPurple">
                         Contact Me
                     </h2>
-                    <p class="font-medium text-md text-secondary md:text-lg">
+                    <p class="font-medium text-md text-secondary dark:text-slate-400 md:text-lg">
                         If you need help bringing your vision to life, collaborate with me.
                         Together, we can create something extraordinary.
                         Contact me to bring your dreams to life.
@@ -1099,20 +1114,23 @@
                     </div>
 
                     <!-- Success Message -->
-                    <div id="popup-success" class="bg-white p-4 rounded-md shadow-md hidden-popup">
+                    <div id="popup-success" class="bg-white p-4 rounded-md shadow-md hidden-popup relative">
+                        <button onclick="closePopup()" class="absolute top-2 right-4 text-gray-400 hover:text-gray-700 text-xl">
+                            &times;
+                        </button>
                         <h3 class="font-bold text-lg text-green-600 mb-3">Message Sent!</h3>
                         <div class="flex justify-center mb-4">
                             <img src="dist/img/success.png" alt="success" width="50px">
                         </div>
-                        <p class="text-gray-700 mb-3 text-sm">Thank you for reaching out to me. I will respond to your
-                            message promptly.</p>
-                        <button onclick="closePopup()"
-                            class="bg-primary dark:bg-customPurple text-white py-1 px-4 rounded hover:bg-opacity-80 transition duration-300">
-                            Close
+                        <p class="text-gray-500 mb-3 text-sm">
+                            Thank you for reaching out to me. I will respond to your message promptly.
+                        </p>
+                    </div>
+                    
+                    <div id="popup-failed" class="bg-white p-4 rounded-md shadow-md hidden-popup relative">
+                        <button onclick="closePopup()" class="absolute top-2 right-4 text-gray-400 hover:text-gray-700 text-xl">
+                            &times;
                         </button>
-                    </div>    
-
-                    <div id="popup-failed" class="bg-white p-4 rounded-md shadow-md hidden-popup">
                         <h3 class="font-bold text-lg text-red-600 mb-3">Message Failed!</h3>
                         <div class="flex justify-center mb-4">
                             <img src="dist/img/failed.png" alt="failed" width="50px">
@@ -1120,11 +1138,8 @@
                         <p class="text-gray-700 mb-3 text-sm">
                             Please provide a valid email address and try again.
                         </p>
-                        <button onclick="closePopup()"
-                            class="bg-red-600 text-white py-1 px-4 rounded hover:bg-opacity-80 transition duration-300">
-                            Close
-                        </button>
-                    </div>              
+                    </div>
+                           
                 </div>
             </div>
 
@@ -1168,7 +1183,7 @@
     <aside>
         <div class="fixed bottom-4 right-4 flex items-end space-x-2">
             <div id="chat-text"
-                class="bg-white text-gray-800 shadow-lg rounded-lg p-4 text-sm max-w-xs transform translate-x-full opacity-0 hidden transition duration-500 ease-out">
+                class="bg-white text-gray-800 shadow-lg rounded-lg p-4 text-sm max-w-xs transform translate-x-full opacity-0 hidden transition duration-500 ease-out ml-4">
                 <p>Some features are not supported on mobile devices. Please use a computer or laptop for the best
                     experience.</p>
             </div>
