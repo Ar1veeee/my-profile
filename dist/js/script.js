@@ -74,18 +74,21 @@ document.addEventListener("DOMContentLoaded", () => {
           imageSlider.style.left = "5%";
           break;
         case 5:
-          imageSlider.style.left = "-5%";
+          imageSlider.style.left = "0%";
           break;
         case 6:
-          imageSlider.style.left = "-10%";
+          imageSlider.style.left = "-5%";
           break;
         case 7:
-          imageSlider.style.left = "-15%";
+          imageSlider.style.left = "-10%";
           break;
         case 8:
-          imageSlider.style.left = "-20%";
+          imageSlider.style.left = "-15%";
           break;
         case 9:
+          imageSlider.style.left = "-20%";
+          break;
+        case 10:
           imageSlider.style.left = "-25%";
           break;
       }
